@@ -15,6 +15,21 @@ class clienteModel {
             })
         })
     }
+
+    criar(cliente){
+        const sql = "insert into clientes set ?"
+        return new Promise((resolve, reject) => {
+            connection.query(sql, cliente, (error, results) => {
+                if(error){
+                    console.log("Erro ao criar cliente")
+                    console.log(error.message)
+                    reject(error)
+                }
+                console.log("Cliente criado com sucesso")
+                resolve(results)
+            })
+        })
+    }
 }
 
 module.exports = new clienteModel()
