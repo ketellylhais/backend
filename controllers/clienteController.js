@@ -4,8 +4,8 @@ class clienteController {
     buscar(){
         return clienteModel.listar()
     }
-    criar(){
-        return "Cliente criado com sucesso"
+    criar(cliente){
+        return clienteModel.criar(cliente)
     }
 
     alterar(id){
@@ -16,3 +16,5 @@ class clienteController {
         return "Cliente excluído com sucesso."
     }
 }
+
+module.exports = new clienteController()

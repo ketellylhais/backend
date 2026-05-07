@@ -30,6 +30,21 @@ class clienteModel {
             })
         })
     }
+
+    atualizar(id, cliente){
+        const sql = "update clientes set ? where id = ?"
+        return new Promise((resolve, reject) => {
+            connection.query(sql, [cliente, id], (error, results) => {
+                if(error){
+                    console.log("Erro ao atualizar cliente")
+                    console.log(error.message)
+                    reject(error)
+                }
+                console.log("Cliente atualizado com sucesso")
+                resolve(results)
+            })
+        })
+    }
 }
 
 module.exports = new clienteModel()
