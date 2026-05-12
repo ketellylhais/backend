@@ -45,6 +45,21 @@ class clienteModel {
             })
         })
     }
+
+    deletar(id, clienteExclusao){
+        const sql = "update clientes set ? where id = ?"
+        return new Promise((resolve, reject) => {
+            connection.query(sql, [clienteExclusao, id], (error, results) => {
+                if(error){
+                    console.log("Erro ao deletar cliente")
+                    console.log(error.message)
+                    reject(error)
+                }
+                console.log("Cliente deletado com sucesso")
+                resolve(results)
+            })
+        })
+    }
 }
 
 module.exports = new clienteModel()
